@@ -348,8 +348,8 @@ class EmbyMetaRefreshModify(_PluginBase):
                     logger.info(
                         f"最新媒体：电视剧 {'%s' % sname} 开始刷新剧集元数据 {sid}")
                     self.__refresh_emby_library_by_id(item_id=sid,
-                                                      refresh_meta=self._ReplaceAllMetadata,
-                                                      refresh_image=self._ReplaceAllImages)
+                                                      refresh_meta="false",
+                                                      refresh_image="false")
             if self._ExclusiveExtract:
                 try:
                     if plugin_id:
