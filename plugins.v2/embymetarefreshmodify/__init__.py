@@ -343,14 +343,13 @@ class EmbyMetaRefreshModify(_PluginBase):
                             flag = self.set_iteminfo(itemid=item_info.get("Id"), iteminfo=item_info, emby=emby)
                             logger.info(
                                 f"最新媒体：{'电视剧' if str(item_info.get('Type')) == 'Episode' else '电影'} {'%s S%02dE%02d %s' % (item_info.get('SeriesName'), item_info.get('ParentIndexNumber'), item_info.get('IndexNumber'), item_info.get('Name')) if str(item_info.get('Type')) == 'Episode' else item_info.get('Name')} {item_info.get('Id')} 演员信息完成 {flag}")
-                # Series去重
-                if len(series_items) > 0:
-                    for sid, sname in series_items.items():
-                        logger.info(
-                            f"最新媒体：电视剧 {'%s' % sname} 开始刷新剧集元数据 {sid}")
-                        self.__refresh_emby_library_by_id(item_id=sid,
-                                                          refresh_meta=self._ReplaceAllMetadata,
-                                                          refresh_image=self._ReplaceAllImages)
+                # Series刷新
+                for sid, sname in series_items.items():
+                    logger.info(
+                        f"最新媒体：电视剧 {'%s' % sname} 开始刷新剧集元数据 {sid}")
+                    self.__refresh_emby_library_by_id(item_id=sid,
+                                                      refresh_meta=self._ReplaceAllMetadata,
+                                                      refresh_image=self._ReplaceAllImages)
             if self._ExclusiveExtract:
                 try:
                     if plugin_id:
