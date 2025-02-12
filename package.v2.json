@@ -8,6 +8,7 @@
         "author": "thsrite,lchecho",
         "level": 1,
         "history": {
+            "v1.1": "bug fix",
             "v1.0": "增加剧集父级元数据刷新"
         }
     }
